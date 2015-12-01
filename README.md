@@ -2,7 +2,7 @@ Magic Word Square (aka. CrossDoku) Solver
 =========================================
 
 Get a dictionary file (text file with one word per line) from [here](http://www.puzzlers.org/dokuwiki/doku.php?id=solving:wordlists:about:start)
-and change the `WORDLIST` variable accordingly.
+and change the `WORDLIST` variable accordingly. (I've found the [Moby Dict](http://www.puzzlers.org/pub/wordlists/mbsingle.txt) very usable.)
 
 
 `SQUARE` holds the raw square - without spaces or anything else. Just all letters one after another.
