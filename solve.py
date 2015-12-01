@@ -14,7 +14,12 @@ WORDLIST="mbsingle.txt"
 #SQUARE="NEREILGEDENALRLELRIGNAATREONALETUGTE"
 #SQUARE="FNADIHALNARTANUUGIANFALNSCGNTATRICTS"
 #SQUARE="RRCOLALAALETSTEIIRSATSTRRECCAEOSEHRE"
-SQUARE="LAGECSERDONOTEINERIDTREEDONLDGARTTDE"
+#SQUARE="LAGECSERDONOTEINERIDTREEDONLDGARTTDE"
+#SQUARE="ITCDOSODIEECEOCNUEGDITISDONMURSCEORE"
+#SQUARE="VVSETENIEDEGGEEAESPNECDINEACIDENTIDE"
+#SQUARE="DLNDTCEGEEEGDENEAACNAALHRRTASDGRAEER"
+#SQUARE="RTLOOEEOBNDNROCLOSOANELDRCEERDNSSLAE"
+SQUARE="ALOMOSLOUEREOAETEDATAGLTSCEGUERDSLTE"
 word_len = math.sqrt(len(SQUARE))
 
 print("Word length: %i" % word_len)
@@ -114,6 +119,22 @@ def try_solve(letters, words = [], max_level = 99):
                 next_matches.append(w)
     return next_matches
 
+def show_result(result):
+    if len(result) > 1:
+        print("Multiple results!")
+        print(repr(result))
+        return
+
+    print("." + "-"*int(word_len) + ".")
+
+    while type(result[0]) == tuple:
+        print("|" + result[0][0] + "|")
+        result = result[0][1]
+    print("|" + result[0] + "|")
+
+    print("'" + "-"*int(word_len) + "'")
+
+
 #rem_first = check_valid("CORRAL", letters.copy())
 #result = try_solve(rem_first.copy(), ["CORRAL"])
 #rem_second = check_valid("LEATE", rem_first.copy())
@@ -122,4 +143,5 @@ def try_solve(letters, words = [], max_level = 99):
 
 result = try_solve(letters.copy())
 #result = try_solve(letters.copy(), max_level=4)
-print(result)
+
+show_result(result)
