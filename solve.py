@@ -4,7 +4,8 @@
 
 import math
 
-WORDLIST="web2.txt"
+#WORDLIST="web2.txt"
+WORDLIST="mbsingle.txt"
 
 #SQUARE="NRONACNELEGOOESLEIEECIDEAIRBBTBODETS"
 #SQUARE="DUAEAYURIZESAEIRLPESPESRSSESSAPPSEED"
@@ -12,7 +13,8 @@ WORDLIST="web2.txt"
 #SQUARE="NNREDCTEMAROACRAMEEIAIMTONCTETERESEC"
 #SQUARE="NEREILGEDENALRLELRIGNAATREONALETUGTE"
 #SQUARE="FNADIHALNARTANUUGIANFALNSCGNTATRICTS"
-SQUARE="RRCOLALAALETSTEIIRSATSTRRECCAEOSEHRE"
+#SQUARE="RRCOLALAALETSTEIIRSATSTRRECCAEOSEHRE"
+SQUARE="LAGECSERDONOTEINERIDTREEDONLDGARTTDE"
 word_len = math.sqrt(len(SQUARE))
 
 print("Word length: %i" % word_len)
@@ -39,7 +41,7 @@ for l in letters:
 
 candidates = []
 
-f = open("web2.txt", "r")
+f = open(WORDLIST, "r")
 for line in f:
     line = line.strip().upper()
     # check word length
@@ -92,25 +94,32 @@ def try_solve(letters, words = [], max_level = 99):
         start_letters += words[i][level]
 #    if level == max_level -1:
 #        print("Prefix: %s, letters: %s" % (start_letters, repr(letters)))
+#    print("Prefix: %s" % start_letters)
     next_matches = []
     for w in candidates:
         if w[:level] != start_letters:
             continue
         rem_letters = check_valid(w[level:], letters.copy())
         if type(rem_letters) is dict:
+#            print("Match: %s" % w)
 #            next_matches.append(w)
             if len(rem_letters)>0:
+#                print("Letters left.")
                 more = try_solve(rem_letters.copy(), words + [w], max_level)
+#                print(more)
                 if more:
                     next_matches.append((w, more))
             else:
+#                print("No letters left.")
                 next_matches.append(w)
     return next_matches
 
-#rem_first = check_valid("BEACON", letters.copy())
-#rem_second = check_valid("NROBE", rem_first.copy())
+#rem_first = check_valid("CORRAL", letters.copy())
+#result = try_solve(rem_first.copy(), ["CORRAL"])
+#rem_second = check_valid("LEATE", rem_first.copy())
 #print(rem_second)
-#result = try_solve(rem_second.copy(), ["BEACON", "ENROBE"])
+#result = try_solve(rem_second.copy(), ["CORRAL", "OLEATE"])
 
-result = try_solve(letters.copy(), max_level=5)
+result = try_solve(letters.copy())
+#result = try_solve(letters.copy(), max_level=4)
 print(result)
