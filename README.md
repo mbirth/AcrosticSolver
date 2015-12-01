@@ -48,7 +48,7 @@ RRSSSS
 TTTTUU
 ```
 
-You should write it into the `SQUARE` variable like this:
+You should write it into the `SQUARE` variable like this (order of letters doesn't matter!):
 
 ```
 SQUARE="AAACCCCEEEEEEEEIILLMRRRRRRSSSSTTTTUU"
